@@ -1,0 +1,26 @@
+<div *ngIf="a">
+	<mat-card class="example-card"*ngFor="let d of data">
+	   <mat-card-header>
+	    <mat-card-title color="primary">Notification
+	   	<span class="example-spacer"></span>
+	    </mat-card-title>
+	    <mat-card-subtitle>
+	    	{{d.time}}
+		</mat-card-subtitle>
+	  </mat-card-header>
+	  <mat-card-content>
+	    <p>
+	      <b>{{d.book_name}}</b> book is available!!
+	    </p>
+	    <p align="right">
+	    	<button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="delete(d.book_name)">
+	      <mat-icon matBadge="{{data.count}}" matBadgeColor="warn">delete</mat-icon>
+	  	</button>
+	  </p>
+	  </mat-card-content>
+	</mat-card>
+</div>
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="b">
+		<h1>No Notifications!!</h1>
+</div>

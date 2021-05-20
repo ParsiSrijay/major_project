@@ -1,0 +1,66 @@
+<div class="container" *ngIf="x">
+	<div class="row">
+		<form class="row g-3" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+		  <div class="col-auto">
+		    <input type="text" class="form-control" placeholder="search" formControlName="name">
+		  </div>
+		  <div class="col-auto">
+		    <button type="submit" class="btn btn-primary mb-3">Search</button>
+		  </div>
+		</form>
+	</div>
+</div>
+
+
+<mat-grid-list cols="2" rowHeight="1:1" *ngIf="a">
+  <mat-grid-tile *ngFor="let d of data">
+  	<mat-card>
+  		<mat-card-title>{{d.Name}}</mat-card-title>
+  		<mat-card-subtitle>{{d.Category}}</mat-card-subtitle>
+  		<button mat-raised-button color="primary" (click)="view(d)">View</button>
+  	</mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="b">
+	<mat-card>
+		<img mat-card-image src={{d.image_url}} />
+		<mat-card-title>{{d.Name}}</mat-card-title>
+		<mat-card-subtitle>{{d.Category}}</mat-card-subtitle>
+		<div class="example-button-row">
+  			<button mat-raised-button color="primary" (click)="close()">Close </button>
+  			<span class="example-spacer"></span>	
+  			<button mat-raised-button color="primary" (click)="subscribe(d.Name,d.ISBN)" *ngIf="c">Subscribe</button>
+  		</div>
+  		<div *ngIf="e">
+	  		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	 	 		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+	    			<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+	  			</symbol>
+			</svg>
+			<div class="alert alert-success d-flex align-items-center" role="alert">
+	  			<svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+	  			<div>
+	    			Book Subscribed!!!
+	  			</div>
+			</div>
+		</div>
+		<div *ngIf="f">
+	  		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	 	 		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+	    			<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+	  			</symbol>
+			</svg>
+			<div class="alert alert-success d-flex align-items-center" role="alert">
+	  			<svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+	  			<div>
+	    			Book Already Subscribed!!!
+	  			</div>
+			</div>
+		</div>	
+  	</mat-card>
+</div>
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>

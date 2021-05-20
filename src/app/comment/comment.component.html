@@ -1,0 +1,37 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="a">
+  <mat-card fxFlex="25%" fxFlex.xs="75%">
+     <mat-toolbar color="primary">View Reviews</mat-toolbar>
+    <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="submit()">
+      <mat-form-field>
+        <input matInput placeholder="Book Name" formControlName="bname">
+      </mat-form-field>
+      <button mat-raised-button type="submit">Submit</button>
+     </form>
+  </mat-card>
+</div>
+<div class = "container">
+  <div class="row">
+    <mat-card class="example-card"*ngFor="let d of data">
+       <mat-card-header>
+        <mat-card-title color="primary">{{d.book_name}}</mat-card-title>
+        <mat-card-subtitle>{{d.time}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <i>Interesting Chapter</i>:
+          {{d.lesson}}
+        </p>
+        <p>
+          <b>{{d.comment}}</b>
+        </p>
+        <p align="right">
+          <i>--{{d.username}}</i>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
